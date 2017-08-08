@@ -20,19 +20,16 @@
   timezone:
     name: "{{ ntp_timezone }}"
 
-- name: Ensure NTP is running and enabled as configured.
+- name: "Ensure NTP is {{ 'started' if ntp_enabled else 'stopped' }}"
   service:
     name: "{{ ntp_daemon }}"
-    state: started
-    enabled: yes
-  when: ntp_enabled
+    state: "{{ 'started' if ntp_enabled else 'stopped' }}"
+  when: ntp_manage_state
 
-- name: Ensure NTP is stopped and disabled as configured.
+- name: "Ensure NTP is {{ 'enabled' if ntp_enabled else 'disabled' }}"
   service:
     name: "{{ ntp_daemon }}"
-    state: stopped
-    enabled: no
-  when: not ntp_enabled
+    enabled: "{{ 'yes' if ntp_enabled else 'no' }}"
 
 - name: Generate ntp.conf file
   template:

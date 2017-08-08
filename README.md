@@ -14,7 +14,11 @@ Available variables are listed below, along with default values (see `defaults/m
 
     ntp_enabled: true
 
-Whether to start the ntpd service and enable it at system boot. On many virtual machines that run inside a container (like OpenVZ or VirtualBox), it's recommended you don't run the NTP daemon, since the host itself should be set to synchronize time for all it's child VMs.
+Whether enable the ntp service at system boot. On many virtual machines that run inside a container (like OpenVZ or VirtualBox), it's recommended you don't run the NTP daemon, since the host itself should be set to synchronize time for all it's child VMs.
+
+    ntp_manage_state: true
+
+Whether to start or stop a service on a running system (depending on the `ntp_enabled` variable).
 
     ntp_timezone: Etc/UTC
 
