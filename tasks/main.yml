@@ -7,9 +7,9 @@
     name: ntp
     state: present
 
-- name: Ensure tzdata package is installed (Linux).
+- name: "Ensure {{ ntp_timezone_pkg }} package is installed (Linux)."
   package:
-    name: tzdata
+    name: "{{ ntp_timezone_pkg }}"
     state: present
   when: ansible_system == "Linux"
 
