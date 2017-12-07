@@ -6,11 +6,13 @@
   package:
     name: ntp
     state: present
+  environment: "{{ ntp_proxy_env }}"
 
 - name: "Ensure {{ ntp_timezone_pkg }} package is installed (Linux)."
   package:
     name: "{{ ntp_timezone_pkg }}"
     state: present
+  environment: "{{ ntp_proxy_env }}"
   when: ansible_system == "Linux"
 
 - include: clock-rhel.yml

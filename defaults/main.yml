@@ -1,4 +1,10 @@
 ---
+ntp_proxy_env:
+  http_proxy: "{{ lookup('env', 'http_proxy') }}"
+  https_proxy: "{{ lookup('env', 'https_proxy') }}"
+  socks_proxy: "{{ lookup('env', 'socks_proxy') }}"
+  no_proxy: "{{ lookup('env', 'no_proxy') }}"
+
 ntp_enabled: true
 ntp_manage_state: true
 ntp_timezone: Etc/UTC
